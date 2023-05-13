@@ -72,7 +72,7 @@ sublist(N, nil).
 sublist(cons(X, Xs), M) :- sublist(Xs, M).
 sublist(cons(X, Xs), cons(X, Xs)) :- sublist(Xs, Xs).
 
-% seq(N,E, List ) --> List is [E,E ,... ,E] with size N
+% seq(N,E, List ) -> List is [E,E ,... ,E] with size N
 % example : seq (s(s(s( zero ))), a, cons (a, cons (a, cons (a,nil )))).
 seq(zero , _ , nil).
 seq(s(N) , E, cons(E, T)) :- seq(N, E, T).
@@ -81,7 +81,7 @@ seq(s(N) , E, cons(E, T)) :- seq(N, E, T).
 seqR(zero, nil).
 seqR(s(N), cons(N, Ns)) :- seqR(N, Ns).
 
-% seqR2 (N, List ) --> is [0 ,1 ,... ,N -1]
+% seqR2 (N, List ) -> is [0 ,1 ,... ,N -1]
 seqR2(N, List) :- seqR2(s(zero), N, List).
 seqR2(s(N), s(N), cons(N, nil)).
 seqR2(s(N), s(X), cons(N, Ns)) :- seqR2(s(s(N)), s(X), Ns).
